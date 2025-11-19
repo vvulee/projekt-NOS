@@ -777,7 +777,7 @@ export default function Home() {
                     : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
                 }`}
               >
-                {verificationStatus ? '✅ POTPIS JE VALIDAN' : '❌ POTPIS NIJE VALIDAN'}
+                {verificationStatus ? 'POTPIS JE VALIDAN' : 'POTPIS NIJE VALIDAN'}
               </div>
             )}
           </div>

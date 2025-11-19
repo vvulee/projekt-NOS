@@ -13,7 +13,7 @@ export interface KeyPair {
 
 export function generateKeys(): Keys {
   const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
-    modulusLength: 2048,
+    modulusLength: 4096,
     publicKeyEncoding: {
       type: 'spki',
       format: 'pem'
@@ -58,22 +58,7 @@ export function decryptSymmetric(encrypted: string, key: Buffer | string): strin
   return decrypted;
 }
 
-export function generateKeyPair(): KeyPair {
-  const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
-    modulusLength: 2048,
-    publicKeyEncoding: {
-      type: 'spki',
-      format: 'pem'
-    },
-    privateKeyEncoding: {
-      type: 'pkcs8',
-      format: 'pem'
-    }
-  });
-
-  return { publicKey, privateKey };
-}
-
+// Više se ne ne koristi, ali ostaje za referencu
 export function encryptAsymmetric(data: string, publicKey: string): string {
   const encrypted = crypto.publicEncrypt(
     {
@@ -85,7 +70,7 @@ export function encryptAsymmetric(data: string, publicKey: string): string {
 
   return encrypted.toString('base64');
 }
-
+// Više se ne ne koristi, ali ostaje za referencu
 export function decryptAsymmetric(encryptedData: string, privateKey: string): string {
   const decrypted = crypto.privateDecrypt(
     {
@@ -155,10 +140,6 @@ export function verifySignature(data: string, signature: string, publicKey: stri
   return verify.verify(publicKey, Buffer.from(signature, 'base64'));
 }
 
-export function calculateHash(data: string): string {
-  return crypto.createHash('sha256').update(data).digest('hex');
-}
-
-export function hashData(data: string, algorithm: 'sha256' | 'sha512' | 'md5' = 'sha256'): string {
+export function hashData(data: string, algorithm: 'sha256' ): string {
   return crypto.createHash(algorithm).update(data).digest('hex');
 }
