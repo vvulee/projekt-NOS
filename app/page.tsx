@@ -386,7 +386,7 @@ export default function Home() {
         <AccordionSection
           sectionNumber={1}
           title="Generiranje ključeva"
-          description="Generiraj RSA par ključeva (2048-bit) i AES simetrični ključ (256-bit)"
+          description="Generiraj RSA par ključeva (4096-bit) i AES simetrični ključ (256-bit)"
         >
           <button
             onClick={handleGenerateKeys}
